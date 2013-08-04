@@ -1,0 +1,25 @@
+{
+  "name": "nor-db",
+  "version": "0.1.0",
+  "description": "Generic Node.js Database Library",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sendanor/node-nor-db.git"
+  },
+  "keywords": [
+    "mysql",
+    "database"
+  ],
+  "dependencies": {
+    "mysql": ">= 2.0.0-alpha8"
+  },
+  "author": "Jaakko-Heikki Heusala <jheusala@iki.fi>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sendanor/node-nor-db/issues"
+  }
+}
