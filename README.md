@@ -40,23 +40,23 @@ db.connect().query('INSERT INTO user SET created=NOW(), updated=NOW(), ?', {'nam
 Method reference
 ----------------
 
-All of these methods -- that usually would return promises or use callbacks -- are returning [Q promises](https://github.com/kriskowal/q) that are extended to support 
-our own methods.
+All these methods that usually would return promises or call callbacks are returning [Q promises](https://github.com/kriskowal/q) that are extended to support 
+our own methods -- and yes, everything is still asynchronous. It's just advanced syntax sugar.
 
 That means you can chain any method directly like `db.foo().bar().foo().then(...)`.
 
 No need for code like this: 
 
-	db.foo.then(function() {
+	db.foo().then(function() {
 		db.bar().then(function() {
-			db.foo(...);
+			db.foo().then(...);
 		});
 	});
 
 
 As a special case you can even call `Array`'s methods with `db.prototype.query()`:
 
-	db.query('SELECT * FROM table LIMIT 1').shift().fetch(function(row) {
+	db.query('SELECT * FROM table LIMIT 1').shift().then(function(row) {
 		console.log( "First row: " + row);
 	});
 
