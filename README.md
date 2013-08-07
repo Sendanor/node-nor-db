@@ -41,7 +41,7 @@ Method reference
 ----------------
 
 All these methods that usually would return promises or call callbacks are returning [Q promises](https://github.com/kriskowal/q) that are extended to support 
-our own methods -- and yes, everything is still asynchronous. It's just advanced syntax sugar.
+our own methods -- and yes, *everything* *is* still *asynchronous*. It's just advanced syntax sugar.
 
 That means you can chain any method directly like `db.foo().bar().foo().then(...)`.
 
