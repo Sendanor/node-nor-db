@@ -3,6 +3,11 @@ node-nor-db
 
 Generic (MySQL) Database Library for Node.js.
 
+Install
+-------
+
+You can install `nor-db` using NPM: `npm install nor-db`
+
 Features
 --------
 
@@ -35,9 +40,31 @@ db.connect().query('INSERT INTO user SET created=NOW(), updated=NOW(), ?', {'nam
 Method reference
 ----------------
 
-### `db.MySQL`
+All of these methods -- that usually would return promises or use callbacks -- are returning [Q promises](https://github.com/kriskowal/q) that are extended to support 
+our own methods.
+
+That means you can chain any method directly like `db.foo().bar().foo().then(...)`.
+
+No need for code like this: 
+
+	db.foo.then(function() {
+		db.bar().then(function() {
+			db.foo(...);
+		});
+	});
+
+
+As a special case you can even call `Array`'s methods with `db.prototype.query()`:
+
+	db.query('SELECT * FROM table LIMIT 1').shift().fetch(function(row) {
+		console.log( "First row: " + row);
+	});
+
+### `db.MySQL(config)`
 
 The MySQL connection object constructor.
+
+Options are same as in [node-mysql](https://github.com/felixge/node-mysql)'s `mysql.createConnection()`.
 
 ### `MySQL.prototype.connect`
 ### `MySQL.prototype.query`
