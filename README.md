@@ -3,6 +3,8 @@ node-nor-db
 
 Generic (MySQL) Database Library for Node.js.
 
+**Please note:** This is an early development version. The code is probably going to change and break a lot. Most features are **not implemented yet**.
+
 Install
 -------
 
