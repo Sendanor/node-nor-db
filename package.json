@@ -4,7 +4,11 @@
   "description": "Generic Database Library for Node.js",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -R spec tests/test-*.js"
+  },
+  "directories": {
+    "test": "tests",
+    "lib": "lib"
   },
   "repository": {
     "type": "git",
@@ -15,13 +19,18 @@
     "database",
     "sql"
   ],
+  "author": "Jaakko-Heikki Heusala <jheusala@iki.fi>",
+  "license": "MIT",
+  "bugs": {
+    "mail" : "info@sendanor.com",
+    "web" : "https://github.com/Sendanor/nor-db/issues"
+  },
   "dependencies": {
     "q": "*",
     "mysql": ">= 2.0.0-alpha8"
   },
-  "author": "Jaakko-Heikki Heusala <jheusala@iki.fi>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Sendanor/node-nor-db/issues"
+  "devDependencies": {
+    "lint": "*",
+    "mocha": "*"
   }
 }
