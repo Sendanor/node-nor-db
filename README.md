@@ -1,5 +1,5 @@
-node-nor-db
-===========
+nor-db
+======
 
 Generic (MySQL) Database Library for Node.js.
 
