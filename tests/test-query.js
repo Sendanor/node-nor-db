@@ -126,12 +126,12 @@ describe('query', function(){
 		});
 
 		// FIXME: Implement these!
-		it.skip('should return new query.Raw("LIMIT 1")', function(){
+		it('should return new query.Raw("LIMIT 1")', function(){
 			assert.strictEqual((new query.Raw('LIMIT 1')).valueOf(), query.limit({limit:1}).valueOf() );
 		});
-		it.skip('should return new query.Raw("LIMIT 2, 4")', function(){
-			assert.strictEqual((new query.Raw('LIMIT 2, 4)')).valueOf(), query.limit({limit:{offset:2, count:4}}).valueOf() );
-			assert.strictEqual((new query.Raw('LIMIT 2, 4)')).valueOf(), query.limit({limit:[2, 4]}).valueOf() );
+		it('should return new query.Raw("LIMIT 2, 4")', function(){
+			assert.strictEqual((new query.Raw('LIMIT 2, 4')).valueOf(), query.limit({limit:{offset:2, count:4}}).valueOf() );
+			assert.strictEqual((new query.Raw('LIMIT 2, 4')).valueOf(), query.limit({limit:[2, 4]}).valueOf() );
 		});
 
 	});
