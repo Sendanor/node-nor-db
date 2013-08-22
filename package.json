@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "q": "*",
+    "nor-extend": "*",
+    "nor-is": "*",
     "mysql": ">= 2.0.0-alpha8"
   },
   "devDependencies": {
