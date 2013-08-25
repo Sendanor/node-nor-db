@@ -39,8 +39,41 @@ db.connect().query('INSERT INTO user SET created=NOW(), updated=NOW(), ?', {'nam
 }).done();
 ```
 
-Method reference
-----------------
+Object-relational Mapping
+-------------------------
+
+**Warning!** There is no complete implementation. This is just the planned interface, which is **not implemented** yet.
+
+The database initialization:
+
+```javascript
+var db = require('nor-db');
+var pool = new db.Pool({host:'localhost', username:'test', password:'...', database:'test'});
+var User = db.createConstructor('user', pool);
+```
+
+Searches for an user with name `jhh` and fetches that record. A new user is created if that user does not exist. All is done inside single transaction.
+
+```javascript
+var tr = new db.Transaction(pool);
+User.search({name:'jhh'}, tr).shift().then(function(user) {
+	if(!user) {
+		return User.create({name:'jhh'}, tr);
+	}
+	return user;
+}).commit().then(function(user) {
+	console.log('User fetched successfully.');
+}).fail(function(err) {
+	console.log('Failed to fetch user: ' + err);
+}).fin(function(){
+	return tr.end();
+}).fail(function(err) {
+	console.log('Error happened: ' + err);
+}).done();
+```
+
+Reference Documentation
+-----------------------
 
 All these methods that usually would return promises or call callbacks are returning [Q promises](https://github.com/kriskowal/q) that are extended to support 
 our own methods -- and *yes*, **everything is still asynchronous**. It's *just* advanced syntax sugar.
