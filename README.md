@@ -48,7 +48,7 @@ The database initialization:
 
 ```javascript
 var db = require('nor-db');
-var pool = new db.Pool({host:'localhost', username:'test', password:'...', database:'test'});
+var pool = new db.MySQL.Pool({host:'localhost', username:'test', password:'...', database:'test'});
 var User = db.createConstructor('user', pool);
 ```
 
