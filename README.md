@@ -62,9 +62,7 @@ User.search({name:'jhh'}, tr).shift().then(function(user) {
 	}
 	return user;
 }).commit().then(function(user) {
-	console.log('User fetched successfully.');
-}).fail(function(err) {
-	console.log('Failed to fetch user: ' + err);
+	console.log('User fetched successfully: ' + user.name);
 }).fin(function(){
 	return tr.end();
 }).fail(function(err) {
