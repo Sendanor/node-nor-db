@@ -49,16 +49,16 @@ The database initialization:
 ```javascript
 var db = require('nor-db');
 var pool = new db.MySQL.Pool({host:'localhost', username:'test', password:'...', database:'test'});
-var User = db.createConstructor('user', pool);
 ```
 
 Searches for an user with name `jhh` and fetches that record. A new user is created if that user does not exist. All is done inside single transaction.
 
 ```javascript
 var tr = new db.Transaction(pool);
-User.search({name:'jhh'}, tr).shift().then(function(user) {
+var User = db.table('user', tr);
+User.search({name:'jhh'}).shift().then(function(user) {
 	if(!user) {
-		return User.create({name:'jhh'}, tr);
+		return User.create({name:'jhh'});
 	}
 	return user;
 }).commit().then(function(user) {
