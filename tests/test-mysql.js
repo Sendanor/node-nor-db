@@ -1,6 +1,6 @@
 "use strict";
 
-var mysql = require('../lib/mysql/');
+var mysql = require('../lib/mysql');
 var assert = require('assert');
 
 // FIXME: create the test database tables if missing
@@ -41,8 +41,7 @@ describe('mysql', function(){
 			}).done();
 		});
 
-		
-		it('.create().$getConnection().$select({from:"user",limit:5}).then(...).$end()', function(done){
+		it.skip('.create().$getConnection().$select({from:"user",limit:5}).then(...).$end()', function(done){
 			mysql.Pool.create({database:'test'}).$getConnection().$select({from:"user",limit:5}).then(function(result) {
 				//console.log( "result = " + JSON.stringify(result, null, 2) );
 				assert.ok(result);
