@@ -13,10 +13,7 @@ util.inherits(Query, db.Query);
 
 /** DISTINCT */
 Query.prototype.distinct = function(opts) {
-	opts = opts || {};
-	if(opts.distinct) {
-		return new db.Query.Raw('DISTINCT');
-	}
+	return this.store('distinct', opts, opts ? new db.Query.Raw('DISTINCT') : null);
 };
 
 /** expr */
